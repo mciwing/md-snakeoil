@@ -89,7 +89,7 @@ class Formatter:
         # look for ```python or ```py code blocks
         # works with attributes like ```python title="example" ... as well
         # and handle indentation
-        pattern = r"([ \t]*)(```(?:python| python|py| py)(?:[^\n]*)\n)(.*?)([ \t]*```)"  # noqa: E501
+        pattern = r"([ \t]*)(```(?:python| python|py| py|Python| Python)(?:[^\n]*)\n)(.*?)([ \t]*```)"  # noqa: E501
 
         matches = list(re.finditer(pattern, content, re.DOTALL))
         if len(matches) == 0:

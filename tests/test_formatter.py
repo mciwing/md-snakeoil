@@ -77,3 +77,15 @@ def test_different_indentation_levels():
 
     assert "    ```python\n    x = [1, 2, 3]\n    ```" in formatted
     assert "        ```python\n        y = [4, 5, 6]\n        ```" in formatted
+
+
+def test_different_info_strings():
+    markdown_content = Path("tests/info_strings.md").read_text()
+    formatter = Formatter()
+    formatted = formatter.format_markdown_content(
+        file_name="", content=dedent(markdown_content)
+    )
+    assert "```python\nx = [1, 2, 3]\n```" in formatted
+    assert "```py\ny = [4, 5, 6]\n```" in formatted
+    assert "```Python\nz = [7, 8, 9]\n```" in formatted
+    assert "```python startline=3 $%@#$\na = [10, 11, 12]\n```" in formatted
